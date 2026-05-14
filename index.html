@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Bhutan Bootcamp — Submission Briefing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="deck-stage.js"></script>
+<style>
+  :root {
+    /* palette — warmer, deeper parchment + bhutan textile reds */
+    --parchment: #F1E6CB;
+    --parchment-deep: #E8D9B2;
+    --paper-lit: #FAF3DD;
+    --ink: #1A130A;
+    --ink-soft: #3B2F22;
+    --ink-mute: #8A7A60;
+    --saffron: #C97A1F;
+    --marigold: #D9A02C;
+    --monastic: #8C1E14;
+    --monastic-deep: #6A100A;
+    --jade: #2D6638;
+    --sky: #1A4E76;
+
+    /* type scale @ 1920x1080 */
+    --type-eyebrow: 24px;
+    --type-spine: 18px;
+    --type-section: 22px;
+    --type-display: 152px;
+    --type-title: 88px;
+    --type-quote: 64px;
+    --type-sub: 32px;
+    --type-bodylg: 28px;
+    --type-body: 24px;
+    --type-numeral-xl: 200px;
+    --type-numeral: 76px;
+    --type-numeral-md: 64px;
+    --type-small: 24px;
+
+    --pad-x: 140px;
+    --pad-top: 130px;
+    --pad-bottom: 160px;
+  }
+
+  * { box-sizing: border-box; }
+  deck-stage { background: #0A0805; }
+
+  /* ============ SLIDE BASE ============ */
+  section {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    text-transform: lowercase;
+    position: relative;
+    overflow: hidden;
+  }
+  /* paper grain + warm light glow */
+  section::before {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(ellipse 1200px 700px at 8% 8%, rgba(217,160,44,0.10), transparent 65%),
+      radial-gradient(ellipse 900px 700px at 92% 100%, rgba(140,30,20,0.07), transparent 60%);
+  }
+  /* subtle horizontal ribbed paper grain */
+  section::after {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none; z-index: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent 0 3px, rgba(26,19,10,0.012) 3px 4px),
+      repeating-linear-gradient(90deg, transparent 0 7px, rgba(26,19,10,0.008) 7px 8px);
+    mix-blend-mode: multiply;
+  }
+
+  /* signature top/bottom rules — doubled */
+  .rule-top, .rule-bot {
+    position: absolute; left: 0; right: 0; z-index: 5;
+  }
+  .rule-top {
+    top: 0;
+    height: 38px;
+    border-bottom: 2px solid var(--monastic);
+    background: linear-gradient(180deg, var(--monastic) 0 2px, transparent 2px 36px, var(--monastic-deep) 36px 38px);
+  }
+  .rule-bot {
+    bottom: 0;
+    height: 38px;
+    border-top: 2px solid var(--monastic);
+    background: linear-gradient(0deg, var(--monastic) 0 2px, transparent 2px 36px, var(--monastic-deep) 36px 38px);
+  }
+
+  /* prayer-flag band — large, set into top rule */
+  .flags {
+    position: absolute;
+    top: 0;
+    right: var(--pad-x);
+    display: flex; gap: 0;
+    z-index: 6;
+    height: 38px;
+    align-items: center;
+    padding: 0 14px;
+    background: var(--paper-lit);
+    border-left: 2px solid var(--monastic);
+    border-right: 2px solid var(--monastic);
+  }
+  .flags i { display: block; width: 22px; height: 14px; }
+  .flags i:nth-child(1) { background: var(--sky); }
+  .flags i:nth-child(2) { background: #F3EAD1; border-top: 1px solid rgba(26,19,10,0.20); border-bottom: 1px solid rgba(26,19,10,0.20); }
+  .flags i:nth-child(3) { background: var(--monastic); }
+  .flags i:nth-child(4) { background: var(--jade); }
+  .flags i:nth-child(5) { background: var(--marigold); }
+
+  /* vertical spine label — running up left edge (writing-mode = clean geometry) */
+  .spine {
+    position: absolute;
+    top: 120px;
+    bottom: 120px;
+    left: 56px;
+    width: 24px;
+    z-index: 6;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--type-spine);
+    letter-spacing: 0.32em;
+    font-weight: 500;
+    color: var(--monastic);
+    display: flex; align-items: center; justify-content: center;
+    gap: 18px;
+  }
+  .spine .pip {
+    writing-mode: horizontal-tb;
+    display: block;
+    width: 8px; height: 8px;
+    background: var(--monastic);
+    border-radius: 50%;
+  }
+  .spine .pip-saf { background: var(--saffron); }
+
+  /* page seal — bottom-left corner stamp */
+  .seal {
+    position: absolute;
+    bottom: 74px;
+    left: var(--pad-x);
+    z-index: 6;
+    display: flex; align-items: center; gap: 0;
+  }
+  .seal .label {
+    display: none;
+  }
+  .seal .stamp {
+    width: 28px; height: 28px;
+    background: var(--monastic);
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .seal .stamp::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    background: var(--marigold);
+  }
+  .seal .stamp::after {
+    content: "";
+    position: absolute;
+    inset: 11px;
+    background: var(--monastic);
+  }
+  .seal b { display: none; }
+
+  /* slide-number — bottom-right */
+  .pagenum {
+    position: absolute;
+    bottom: 64px;
+    right: var(--pad-x);
+    z-index: 6;
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--monastic);
+    letter-spacing: -0.01em;
+  }
+  .pagenum span {
+    color: var(--ink-mute);
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-size: 24px;
+    letter-spacing: 0.3em;
+    margin-left: 18px;
+    vertical-align: middle;
+  }
+
+  /* shared frame */
+  .frame {
+    position: absolute; inset: 0;
+    padding: var(--pad-top) var(--pad-x) var(--pad-bottom) 200px;
+    display: flex; flex-direction: column;
+    z-index: 2;
+  }
+
+  /* ===== HEADER (title + eyebrow + ornament) ===== */
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--type-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    color: var(--monastic);
+    margin: 0 0 22px;
+    display: flex; align-items: center; gap: 18px;
+  }
+  .eyebrow .rule {
+    flex: 0 0 60px;
+    height: 2px;
+    background: var(--monastic);
+  }
+  .eyebrow .num {
+    color: var(--ink); font-weight: 600;
+  }
+
+  h1.title {
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    font-weight: 500;
+    font-size: var(--type-title);
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0 0 8px;
+  }
+  h1.title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--monastic);
+  }
+  .subtitle {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: var(--type-sub);
+    color: var(--monastic);
+    margin: 0 0 28px;
+    letter-spacing: -0.005em;
+    max-width: 1100px;
+  }
+
+  /* ============ SLIDE 1 — RULES ============ */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 88px;
+    row-gap: 30px;
+    flex: 1;
+    align-content: start;
+  }
+  .rule {
+    display: grid;
+    grid-template-columns: 74px 1fr;
+    column-gap: 22px;
+    align-items: baseline;
+  }
+  .rule .n {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    font-weight: 500;
+    font-size: 72px;
+    line-height: 0.9;
+    color: var(--monastic);
+    text-align: right;
+    font-feature-settings: "lnum";
+    font-variant-numeric: lining-nums;
+    padding-top: 6px;
+  }
+  .rule .body {
+    font-family: 'Inter', sans-serif;
+    font-size: var(--type-body);
+    line-height: 1.4;
+    color: var(--ink-soft);
+    padding-top: 12px;
+    max-width: 720px;
+  }
+  .rule .body b {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: var(--ink);
+    margin-right: 4px;
+  }
+  .rule .body .dash {
+    color: var(--saffron); margin: 0 6px;
+    font-weight: 600;
+  }
+
+  /* footer quote */
+  .footer-quote {
+    margin-top: auto;
+    padding-top: 22px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 26px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    max-width: 1200px;
+    line-height: 1.3;
+    border-top: 1px solid rgba(140,30,20,0.30);
+  }
+  .footer-quote::first-letter {
+    color: var(--monastic);
+  }
+
+  /* ============ SLIDE 2 — DEMO (quote-led) ============ */
+  .demo-hero {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: var(--type-quote);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0 0 44px;
+    max-width: 1500px;
+  }
+  .demo-hero em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--monastic);
+    background: linear-gradient(180deg, transparent 65%, rgba(217,160,44,0.45) 65% 95%, transparent 95%);
+    padding: 0 4px;
+  }
+  .demo-hero .mark {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--monastic);
+    font-size: 1.4em;
+    line-height: 0.3;
+    vertical-align: -0.18em;
+    margin-right: 8px;
+  }
+  .demo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 80px;
+    row-gap: 36px;
+    flex: 1;
+    align-content: start;
+  }
+  .demo-card {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    column-gap: 24px;
+    border-top: 1px solid rgba(140,30,20,0.25);
+    padding-top: 22px;
+  }
+  .demo-card .n {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 78px;
+    line-height: 0.85;
+    color: var(--monastic);
+    text-align: right;
+  }
+  .demo-card h3 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 1.05;
+    margin: 0 0 10px;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+  }
+  .demo-card p {
+    font-family: 'Inter', sans-serif;
+    font-size: var(--type-body);
+    line-height: 1.4;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 580px;
+  }
+
+  /* ============ SLIDE 3 — RESOURCES ============ */
+  .resources {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    column-gap: 80px;
+    row-gap: 0;
+    flex: 1;
+    align-content: start;
+  }
+  .res-divider {
+    background: rgba(140,30,20,0.25);
+    height: 100%;
+    align-self: stretch;
+  }
+  .res-section-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    color: var(--monastic);
+    margin: 0 0 32px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--monastic);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .res-section-title .pip {
+    display: inline-block;
+    width: 10px; height: 10px;
+    background: var(--saffron);
+  }
+  .res-col {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    column-gap: 22px;
+    row-gap: 32px;
+    align-items: baseline;
+  }
+  .res-col .n {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144;
+    font-weight: 500;
+    font-size: 56px;
+    line-height: 0.9;
+    color: var(--monastic);
+    text-align: right;
+    font-feature-settings: "lnum";
+    font-variant-numeric: lining-nums;
+    padding-top: 2px;
+  }
+  .res-col h4 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    font-weight: 600;
+    font-size: 30px;
+    margin: 0 0 6px;
+    color: var(--ink);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .res-col p {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    color: var(--ink-soft);
+    line-height: 1.35;
+    margin: 0 0 6px;
+    max-width: 660px;
+  }
+  .res-col .url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 17px;
+    color: var(--saffron);
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+  .res-col .url::before {
+    content: "→ ";
+    color: var(--monastic);
+  }  /* ============ SLIDE 4 — MENTORS ============ */
+  .mentor-intro {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.3;
+    color: var(--ink);
+    margin: 0 0 48px;
+    max-width: 1500px;
+    letter-spacing: -0.005em;
+  }
+  .mentor-intro em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--monastic);
+  }
+
+  .mentor-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 48px;
+    flex: 1;
+    align-content: start;
+  }
+
+  .mentor-card {
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid var(--monastic);
+    padding-top: 24px;
+  }
+  .mentor-card .roman {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--monastic);
+    margin-bottom: 14px;
+  }
+  .mentor-card h3 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0 0 28px;
+  }
+  .mentor-card .specialty {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 24px;
+    letter-spacing: 0.18em;
+    font-weight: 500;
+    color: var(--monastic);
+    margin-bottom: 18px;
+  }
+  .mentor-card .skills {
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    list-style: none;
+    padding: 0; margin: 0;
+  }
+  .mentor-card .skills li {
+    padding-left: 22px;
+    position: relative;
+  }
+  .mentor-card .skills li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.6em;
+    width: 12px; height: 2px;
+    background: var(--saffron);
+  }
+
+</style>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080">
+
+  <!-- ============ 01 — RULES ============ -->
+  <section data-label="01 hackathon rules">
+    <div class="rule-top"></div>
+    <div class="rule-bot"></div>
+    <div class="flags"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="spine"><span class="pip"></span><span>bhutan bootcamp · druk land · 17 may 2026</span><span class="pip pip-saf"></span></div>
+    <div class="seal"><span class="stamp"></span><span class="label"><b>i.</b> rules of the road</span></div>
+    <div class="pagenum">01<span>04</span></div>
+
+    <div class="frame">
+      <div class="eyebrow"><span class="rule"></span><span class="num">i</span><span>· section one</span></div>
+      <h1 class="title">hackathon <em>rules.</em></h1>
+      <p class="subtitle">the eight things to know before you submit.</p>
+
+      <div class="rules-grid">
+        <div class="rule">
+          <div class="n">1</div>
+          <div class="body"><b>deadline</b><span class="dash">—</span>2:30 pm, sunday 17 may. after that, no edits.</div>
+        </div>
+        <div class="rule">
+          <div class="n">2</div>
+          <div class="body"><b>submit on speedrunethereum.com</b><span class="dash">—</span>one submission per team.</div>
+        </div>
+        <div class="rule">
+          <div class="n">3</div>
+          <div class="body"><b>one problem statement per team</b><span class="dash">—</span>you can pivot during the build, but your final submission locks to one. judges score against just that one.</div>
+        </div>
+        <div class="rule">
+          <div class="n">4</div>
+          <div class="body"><b>submit even if it's not finished</b><span class="dash">—</span>partial projects still count.</div>
+        </div>
+        <div class="rule">
+          <div class="n">5</div>
+          <div class="body"><b>save your code often</b><span class="dash">—</span>push to github as you go, not in one big drop at the end.</div>
+        </div>
+        <div class="rule">
+          <div class="n">6</div>
+          <div class="body"><b>ask mentors when stuck</b><span class="dash">—</span>that's what they're here for. don't sit silent. raise your hand.</div>
+        </div>
+        <div class="rule">
+          <div class="n">7</div>
+          <div class="body"><b>show your project actually working</b><span class="dash">—</span>in your demo, click through the real flow. don't read slides at the judges.</div>
+        </div>
+        <div class="rule">
+          <div class="n">8</div>
+          <div class="body"><b>tell us who in bhutan this helps</b><span class="dash">—</span>one real person, one real problem. that's the story judges remember.</div>
+        </div>
+      </div>
+
+      <p class="footer-quote">submit something. anything is better than nothing.</p>
+    </div>
+  </section>
+
+  <!-- ============ 02 — DEMO ============ -->
+  <section data-label="02 winning demo">
+    <div class="rule-top"></div>
+    <div class="rule-bot"></div>
+    <div class="flags"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="spine"><span class="pip"></span><span>bhutan bootcamp · druk land · 17 may 2026</span><span class="pip pip-saf"></span></div>
+    <div class="seal"><span class="stamp"></span><span class="label"><b>ii.</b> the demo</span></div>
+    <div class="pagenum">02<span>04</span></div>
+
+    <div class="frame">
+      <div class="eyebrow"><span class="rule"></span><span class="num">ii</span><span>· section two</span></div>
+      <h1 class="title">a winning <em>demo.</em></h1>
+
+      <p class="demo-hero"><span class="mark">"</span>the room remembers <em>stories</em>, not specs.</p>
+
+      <div class="demo-grid">
+        <div class="demo-card">
+          <div class="n">i.</div>
+          <div>
+            <h3>show the product working.</h3>
+            <p>not yourself talking. click through the real flow. skip metamask confirmations and loading screens. the judges should see it work, not hear about it.</p>
+          </div>
+        </div>
+        <div class="demo-card">
+          <div class="n">ii.</div>
+          <div>
+            <h3>tell one real story.</h3>
+            <p>who is the bhutanese citizen whose life this improves? one person, one moment, one problem solved. specific beats abstract every time.</p>
+          </div>
+        </div>
+        <div class="demo-card">
+          <div class="n">iii.</div>
+          <div>
+            <h3>paint the two-year vision.</h3>
+            <p>end with where this goes. "this is the beginning of an idea. help us see it." the room funds momentum, not finished products.</p>
+          </div>
+        </div>
+        <div class="demo-card">
+          <div class="n">iv.</div>
+          <div>
+            <h3>own your difference.</h3>
+            <p>every team has the same ai tools. what you build on top of your core idea is what sets yours apart. be strategic about that one feature.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 — RESOURCES ============ -->
+  <section data-label="03 resources">
+    <div class="rule-top"></div>
+    <div class="rule-bot"></div>
+    <div class="flags"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="spine"><span class="pip"></span><span>bhutan bootcamp · druk land · 17 may 2026</span><span class="pip pip-saf"></span></div>
+    <div class="seal"><span class="stamp"></span><span class="label"><b>iii.</b> the atlas</span></div>
+    <div class="pagenum">03<span>04</span></div>
+
+    <div class="frame">
+      <div class="eyebrow"><span class="rule"></span><span class="num">iii</span><span>· section three</span></div>
+      <h1 class="title">an <em>atlas</em> of resources.</h1>
+      <p class="subtitle">things worth bookmarking today.</p>
+
+      <div class="resources">
+        <div>
+          <h2 class="res-section-title"><span class="pip"></span>build on ethereum</h2>
+          <div class="res-col">
+            <div class="n">1</div>
+            <div>
+              <h4>speedrun ethereum.</h4>
+              <p>your submission home. start here if you've never deployed before — gets you to a live contract in an hour.</p>
+              <div class="url">speedrunethereum.com/start</div>
+            </div>
+
+            <div class="n">2</div>
+            <div>
+              <h4>scaffold-eth 2 — docs.</h4>
+              <p>the starter template. local chain, contracts, and a next.js frontend in one command. read the docs, then clone, edit, ship.</p>
+              <div class="url">docs.scaffoldeth.io</div>
+            </div>
+
+            <div class="n">3</div>
+            <div>
+              <h4>ethereum.org — developers.</h4>
+              <p>the official developer hub. tutorials, language references, client docs. when you want the canonical answer.</p>
+              <div class="url">ethereum.org/developers</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="res-divider"></div>
+
+        <div>
+          <h2 class="res-section-title"><span class="pip"></span>git &amp; hackathon</h2>
+          <div class="res-col">
+            <div class="n">4</div>
+            <div>
+              <h4>git &amp; github in 30 minutes.</h4>
+              <p>a single video. watch it tonight. covers everything you'll need: init, commit, branch, push, pull request.</p>
+              <div class="url">youtu.be/S7XpTAnSDL4</div>
+            </div>
+
+            <div class="n">5</div>
+            <div>
+              <h4>ethglobal hackathon resources.</h4>
+              <p>the canonical hackathon survival guide. read it once before friday. covers tooling, judging, and how to make a winning submission.</p>
+              <div class="url">ethglobal.com/events/ethonline/info/resources</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 — MENTORS ============ -->
+  <section data-label="04 the mentors">
+    <div class="rule-top"></div>
+    <div class="rule-bot"></div>
+    <div class="flags"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="spine"><span class="pip"></span><span>bhutan bootcamp · druk land · 17 may 2026</span><span class="pip pip-saf"></span></div>
+    <div class="seal"><span class="stamp"></span><span class="label"><b>iv.</b> the mentors</span></div>
+    <div class="pagenum">04<span>04</span></div>
+
+    <div class="frame">
+      <div class="eyebrow"><span class="rule"></span><span class="num">iv</span><span>· section four</span></div>
+      <h1 class="title">your <em>mentors.</em></h1>
+      <p class="subtitle">don't sit silent. raise your hand.</p>
+
+      <p class="mentor-intro">all four are here for the obvious questions — <em>problem statements, ideation, debugging.</em> each one brings a specialty. find the right person, find them fast.</p>
+
+      <div class="mentor-grid">
+        <div class="mentor-card">
+          <span class="roman">i.</span>
+          <h3>kim</h3>
+          <div class="specialty">specialty</div>
+          <ul class="skills">
+            <li>presentation</li>
+            <li>pitching</li>
+          </ul>
+        </div>
+
+        <div class="mentor-card">
+          <span class="roman">ii.</span>
+          <h3>shiv</h3>
+          <div class="specialty">specialty</div>
+          <ul class="skills">
+            <li>frontends</li>
+            <li>ai</li>
+            <li>git &amp; github</li>
+          </ul>
+        </div>
+
+        <div class="mentor-card">
+          <span class="roman">iii.</span>
+          <h3>mridul</h3>
+          <div class="specialty">specialty</div>
+          <ul class="skills">
+            <li>smart contracts</li>
+            <li>backend</li>
+            <li>ai</li>
+            <li>git &amp; github</li>
+          </ul>
+        </div>
+
+        <div class="mentor-card">
+          <span class="roman">iv.</span>
+          <h3>sarang</h3>
+          <div class="specialty">specialty</div>
+          <ul class="skills">
+            <li>backends</li>
+            <li>smart contracts</li>
+            <li>ai</li>
+            <li>git &amp; github</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</deck-stage>
+
+</body>
+</html>
