@@ -493,8 +493,8 @@
 
   .mentor-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    column-gap: 48px;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 36px;
     flex: 1;
     align-content: start;
   }
@@ -510,20 +510,62 @@
     font-variation-settings: "opsz" 144;
     font-style: italic;
     font-weight: 500;
-    font-size: 56px;
+    font-size: 48px;
     line-height: 1;
     color: var(--monastic);
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
   .mentor-card h3 {
     font-family: 'Fraunces', serif;
     font-variation-settings: "opsz" 144, "SOFT" 30;
     font-weight: 600;
-    font-size: 64px;
+    font-size: 56px;
     line-height: 0.95;
     letter-spacing: -0.025em;
     color: var(--ink);
-    margin: 0 0 28px;
+    margin: 0 0 24px;
+  }
+  .mentor-card .specialty { font-size: 22px; }
+  .mentor-card .skills { font-size: 22px; }
+
+  /* focused card — tied to a specific problem statement */
+  .mentor-card--focused { border-top-color: var(--saffron); }
+  .mentor-card--focused .focus-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.26em;
+    font-weight: 600;
+    color: var(--saffron);
+    margin-bottom: 10px;
+  }
+  .mentor-card--focused .roman { color: var(--saffron); }
+  .mentor-card--focused .specialty { color: var(--saffron); }
+  .mentor-card .channel {
+    display: inline-block;
+    margin-top: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    color: var(--saffron);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 120ms ease, border-color 120ms ease;
+  }
+  .mentor-card .channel:hover,
+  .mentor-card .channel:focus-visible {
+    color: var(--monastic);
+    border-bottom-color: var(--monastic);
+    outline: none;
+  }
+  .mentor-card .channel::before { content: "→ "; color: var(--monastic); }
+  .mentor-card .channel-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.35;
+    color: var(--ink-soft);
+    margin-top: 14px;
+    max-width: 100%;
   }
   .mentor-card .specialty {
     font-family: 'JetBrains Mono', monospace;
@@ -739,7 +781,7 @@
       <h1 class="title">your <em>mentors.</em></h1>
       <p class="subtitle">don't sit silent. raise your hand.</p>
 
-      <p class="mentor-intro">all four are here for the obvious questions — <em>problem statements, ideation, debugging.</em> each one brings a specialty. find the right person, find them fast.</p>
+      <p class="mentor-intro">the first four are here for the obvious questions — <em>problem statements, ideation, debugging.</em> tim and his team are dedicated to the <em>document verification</em> problem statement — live in zulip the entire hackathon. find the right person, find them fast.</p>
 
       <div class="mentor-grid">
         <div class="mentor-card">
@@ -785,6 +827,21 @@
             <li>ai</li>
             <li>git &amp; github</li>
           </ul>
+        </div>
+
+        <div class="mentor-card mentor-card--focused">
+          <span class="focus-tag">for · document verification</span>
+          <span class="roman">v.</span>
+          <h3>tim</h3>
+          <div class="specialty">aqua protocol</div>
+          <ul class="skills">
+            <li>data provenance &amp; verification</li>
+            <li>decentralized identity (eudi)</li>
+            <li>applied cryptography</li>
+            <li>secure architecture</li>
+          </ul>
+          <a class="channel" href="https://aquaprotocol.zulipchat.com/" target="_blank" rel="noopener noreferrer">aquaprotocol.zulipchat.com</a>
+          <p class="channel-note">his whole team is live in there for the full hackathon.</p>
         </div>
       </div>
     </div>
