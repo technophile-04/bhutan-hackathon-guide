@@ -459,6 +459,16 @@
     color: var(--saffron);
     letter-spacing: 0.04em;
     font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    border-bottom: 1px solid transparent;
+    transition: color 120ms ease, border-color 120ms ease;
+  }
+  .res-col a.url:hover,
+  .res-col a.url:focus-visible {
+    color: var(--monastic);
+    border-bottom-color: var(--monastic);
+    outline: none;
   }
   .res-col .url::before {
     content: "→ ";
@@ -672,21 +682,21 @@
             <div>
               <h4>speedrun ethereum.</h4>
               <p>your submission home. start here if you've never deployed before — gets you to a live contract in an hour.</p>
-              <div class="url">speedrunethereum.com/start</div>
+              <a class="url" href="https://speedrunethereum.com/start" target="_blank" rel="noopener noreferrer">speedrunethereum.com/start</a>
             </div>
 
             <div class="n">2</div>
             <div>
               <h4>scaffold-eth 2 — docs.</h4>
               <p>the starter template. local chain, contracts, and a next.js frontend in one command. read the docs, then clone, edit, ship.</p>
-              <div class="url">docs.scaffoldeth.io</div>
+              <a class="url" href="https://docs.scaffoldeth.io" target="_blank" rel="noopener noreferrer">docs.scaffoldeth.io</a>
             </div>
 
             <div class="n">3</div>
             <div>
               <h4>ethereum.org — developers.</h4>
               <p>the official developer hub. tutorials, language references, client docs. when you want the canonical answer.</p>
-              <div class="url">ethereum.org/developers</div>
+              <a class="url" href="https://ethereum.org/developers" target="_blank" rel="noopener noreferrer">ethereum.org/developers</a>
             </div>
           </div>
         </div>
@@ -700,14 +710,14 @@
             <div>
               <h4>git &amp; github in 30 minutes.</h4>
               <p>a single video. watch it tonight. covers everything you'll need: init, commit, branch, push, pull request.</p>
-              <div class="url">youtu.be/S7XpTAnSDL4</div>
+              <a class="url" href="https://youtu.be/S7XpTAnSDL4" target="_blank" rel="noopener noreferrer">youtu.be/S7XpTAnSDL4</a>
             </div>
 
             <div class="n">5</div>
             <div>
               <h4>ethglobal hackathon resources.</h4>
               <p>the canonical hackathon survival guide. read it once before friday. covers tooling, judging, and how to make a winning submission.</p>
-              <div class="url">ethglobal.com/events/ethonline/info/resources</div>
+              <a class="url" href="https://ethglobal.com/events/ethonline/info/resources" target="_blank" rel="noopener noreferrer">ethglobal.com/events/ethonline/info/resources</a>
             </div>
           </div>
         </div>
