@@ -40,7 +40,7 @@
 
     --pad-x: 140px;
     --pad-top: 130px;
-    --pad-bottom: 180px;
+    --pad-bottom: 160px;
   }
 
   * { box-sizing: border-box; }
@@ -495,7 +495,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 36px;
-    row-gap: 44px;
+    row-gap: 22px;
     flex: 1;
     align-content: start;
   }
@@ -504,42 +504,42 @@
     display: flex;
     flex-direction: column;
     border-top: 2px solid var(--monastic);
-    padding-top: 24px;
+    padding-top: 18px;
   }
   .mentor-card .roman {
     font-family: 'Fraunces', serif;
     font-variation-settings: "opsz" 144;
     font-style: italic;
     font-weight: 500;
-    font-size: 48px;
+    font-size: 42px;
     line-height: 1;
     color: var(--monastic);
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
   .mentor-card h3 {
     font-family: 'Fraunces', serif;
     font-variation-settings: "opsz" 144, "SOFT" 30;
     font-weight: 600;
-    font-size: 56px;
+    font-size: 46px;
     line-height: 0.95;
     letter-spacing: -0.025em;
     color: var(--ink);
-    margin: 0 0 22px;
+    margin: 0 0 14px;
   }
-  .mentor-card .specialty { font-size: 22px; }
-  .mentor-card .skills { font-size: 22px; line-height: 1.5; }
-  .mentor-card .skills li { padding-left: 22px; }
+  .mentor-card .specialty { font-size: 20px; }
+  .mentor-card .skills { font-size: 20px; line-height: 1.4; }
+  .mentor-card .skills li { padding-left: 18px; }
 
   /* shared eyebrow tag — base style, color set by variant */
   .mentor-card .focus-tag {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-    letter-spacing: 0.18em;
+    font-size: 13px;
+    letter-spacing: 0.14em;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     white-space: nowrap;
   }
-  .mentor-card .focus-tag + .roman { margin-bottom: 10px; }
+  .mentor-card .focus-tag + .roman { margin-bottom: 6px; }
 
   /* focused — tied to a specific problem statement (saffron) */
   .mentor-card--focused { border-top-color: var(--saffron); }
@@ -796,8 +796,6 @@
       <div class="eyebrow"><span class="rule"></span><span class="num">iv</span><span>· section four</span></div>
       <h1 class="title">your <em>mentors.</em></h1>
       <p class="subtitle">don't sit silent. raise your hand.</p>
-
-      <p class="mentor-intro">all here for the obvious questions — <em>problem statements, ideation, debugging.</em></p>
 
       <div class="mentor-grid">
         <div class="mentor-card">
