@@ -493,8 +493,8 @@
 
   .mentor-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    column-gap: 28px;
+    grid-template-columns: repeat(7, 1fr);
+    column-gap: 22px;
     flex: 1;
     align-content: start;
   }
@@ -503,40 +503,41 @@
     display: flex;
     flex-direction: column;
     border-top: 2px solid var(--monastic);
-    padding-top: 24px;
+    padding-top: 22px;
   }
   .mentor-card .roman {
     font-family: 'Fraunces', serif;
     font-variation-settings: "opsz" 144;
     font-style: italic;
     font-weight: 500;
-    font-size: 48px;
+    font-size: 40px;
     line-height: 1;
     color: var(--monastic);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
   .mentor-card h3 {
     font-family: 'Fraunces', serif;
     font-variation-settings: "opsz" 144, "SOFT" 30;
     font-weight: 600;
-    font-size: 56px;
+    font-size: 44px;
     line-height: 0.95;
     letter-spacing: -0.025em;
     color: var(--ink);
-    margin: 0 0 24px;
+    margin: 0 0 18px;
   }
-  .mentor-card .specialty { font-size: 22px; }
-  .mentor-card .skills { font-size: 22px; }
+  .mentor-card .specialty { font-size: 20px; }
+  .mentor-card .skills { font-size: 20px; line-height: 1.45; }
+  .mentor-card .skills li { padding-left: 18px; }
 
   /* focused card — tied to a specific problem statement */
   .mentor-card--focused { border-top-color: var(--saffron); }
   .mentor-card--focused .focus-tag {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.14em;
+    font-size: 11px;
+    letter-spacing: 0.1em;
     font-weight: 600;
     color: var(--saffron);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     white-space: nowrap;
   }
   .mentor-card--focused .roman { color: var(--saffron); margin-bottom: 8px; }
@@ -852,6 +853,15 @@
             <li>frontend</li>
             <li>ndi</li>
             <li>ai</li>
+          </ul>
+        </div>
+
+        <div class="mentor-card">
+          <span class="roman">vii.</span>
+          <h3>tshendu</h3>
+          <ul class="skills">
+            <li>backend</li>
+            <li>ndi</li>
           </ul>
         </div>
       </div>
