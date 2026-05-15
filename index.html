@@ -529,26 +529,26 @@
   .mentor-card .skills { font-size: 20px; line-height: 1.45; }
   .mentor-card .skills li { padding-left: 18px; }
 
-  /* focused card — tied to a specific problem statement */
-  .mentor-card--focused { border-top-color: var(--saffron); }
-  .mentor-card--focused .focus-tag {
+  /* shared eyebrow tag — base style, color set by variant */
+  .mentor-card .focus-tag {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     letter-spacing: 0.1em;
     font-weight: 600;
-    color: var(--saffron);
     margin-bottom: 8px;
     white-space: nowrap;
   }
-  .mentor-card--focused .roman { color: var(--saffron); margin-bottom: 8px; }
-  .mentor-card--focused h3 { margin-bottom: 18px; }
-  .mentor-card--focused .specialty {
-    color: var(--saffron);
-    letter-spacing: 0.1em;
-    margin-bottom: 14px;
-  }
-  .mentor-card--focused .skills { font-size: 20px; line-height: 1.4; }
-  .mentor-card--focused .skills li { padding-left: 18px; }
+  .mentor-card .focus-tag + .roman { margin-bottom: 8px; }
+
+  /* focused — tied to a specific problem statement (saffron) */
+  .mentor-card--focused { border-top-color: var(--saffron); }
+  .mentor-card--focused .focus-tag { color: var(--saffron); }
+  .mentor-card--focused .roman { color: var(--saffron); }
+
+  /* team grouping — bhutanNDI team (jade) */
+  .mentor-card--team-ndi { border-top-color: var(--jade); }
+  .mentor-card--team-ndi .focus-tag { color: var(--jade); }
+  .mentor-card--team-ndi .roman { color: var(--jade); }
 
   .mentor-card .channel {
     display: inline-block;
@@ -846,7 +846,8 @@
           </ul>
         </div>
 
-        <div class="mentor-card">
+        <div class="mentor-card mentor-card--team-ndi">
+          <span class="focus-tag">team · bhutan ndi</span>
           <span class="roman">vi.</span>
           <h3>kinley</h3>
           <ul class="skills">
@@ -856,12 +857,15 @@
           </ul>
         </div>
 
-        <div class="mentor-card">
+        <div class="mentor-card mentor-card--team-ndi">
+          <span class="focus-tag">team · bhutan ndi</span>
           <span class="roman">vii.</span>
           <h3>tshendu</h3>
           <ul class="skills">
             <li>backend</li>
             <li>ndi</li>
+            <li>decentralized identity</li>
+            <li>applied cryptography</li>
           </ul>
         </div>
       </div>
