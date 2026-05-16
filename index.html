@@ -611,11 +611,379 @@
     background: var(--saffron);
   }
 
+  /* ============ COVER (reusable title slide) ============ */
+  /* swap .cover-title / .cover-sub / .cover-meta for any future event */
+  section[data-cover] .frame { justify-content: center; }
+  .cover-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    color: var(--monastic);
+    margin: 0 0 40px;
+    display: flex; align-items: center; gap: 18px;
+  }
+  .cover-eyebrow .rule { flex: 0 0 80px; height: 2px; background: var(--monastic); }
+  h1.cover-title {
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    font-weight: 500;
+    font-size: var(--type-display);
+    line-height: 0.86;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin: 0 0 30px;
+  }
+  h1.cover-title em { font-style: italic; font-weight: 400; color: var(--monastic); }
+  .cover-sub {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 46px;
+    color: var(--monastic);
+    margin: 0 0 60px;
+    max-width: 1300px;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+  }
+  .cover-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    letter-spacing: 0.16em;
+    font-weight: 500;
+    color: var(--ink-soft);
+    display: flex; align-items: center; gap: 26px;
+  }
+  .cover-meta .dot {
+    width: 8px; height: 8px;
+    background: var(--saffron);
+    display: inline-block;
+  }
+
+  /* ============ PROBLEM STATEMENTS — INDEX ============ */
+  .ps-index {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 80px;
+    row-gap: 24px;
+    flex: 1;
+    align-content: start;
+  }
+  .ps-item {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    column-gap: 22px;
+    align-items: baseline;
+    border-top: 1px solid rgba(140,30,20,0.25);
+    padding-top: 16px;
+  }
+  .ps-item .n {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 0.9;
+    color: var(--monastic);
+    text-align: right;
+    font-variant-numeric: lining-nums;
+  }
+  .ps-item h3 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.05;
+    color: var(--ink);
+    margin: 0 0 6px;
+    letter-spacing: -0.012em;
+  }
+  .ps-item p {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    line-height: 1.35;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 640px;
+  }
+
+  /* ============ PROBLEM STATEMENTS — DETAIL ============ */
+  .ps-context {
+    font-family: 'Inter', sans-serif;
+    font-size: 27px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 1480px;
+    margin: 8px 0 0;
+  }
+  .ps-context b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .ps-hmw {
+    margin-top: auto;
+    border-top: 2px solid var(--monastic);
+    padding-top: 30px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 1.24;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    max-width: 1560px;
+  }
+  .ps-hmw .label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    color: var(--monastic);
+    margin-bottom: 18px;
+  }
+  .ps-hmw em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--monastic);
+  }
+
 </style>
 </head>
 <body>
 
 <deck-stage width="1920" height="1080">
+
+  <!-- ============ COVER ============ -->
+  <!-- data-cover = skipped by the auto-pagenum script. swap the title,
+       subtitle, and meta line to reuse this template for any event. -->
+  <section data-cover data-label="cover">
+    <div class="rule-top"></div>
+    <div class="rule-bot"></div>
+    <div class="flags"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="spine"><span class="pip"></span><span>bhutan bootcamp · druk land · 17 may 2026</span><span class="pip pip-saf"></span></div>
+    <div class="seal"><span class="stamp"></span></div>
+
+    <div class="frame">
+      <div class="cover-eyebrow"><span class="rule"></span><span>speedrun ethereum · bootcamp</span></div>
+      <h1 class="cover-title">bhutan<br /><em>bootcamp.</em></h1>
+      <p class="cover-sub">submission briefing — everything you need before you ship.</p>
+      <div class="cover-meta">
+        <span>druk land</span><span class="dot"></span>
+        <span>17 may 2026</span><span class="dot"></span>
+        <span>submit by 2:30 pm</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROBLEM STATEMENTS — INDEX ============ -->
+  <section data-label="problem statements">
+    <div class="rule-top"></div>
+    <div class="rule-bot"></div>
+    <div class="flags"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="spine"><span class="pip"></span><span>bhutan bootcamp · druk land · 17 may 2026</span><span class="pip pip-saf"></span></div>
+    <div class="seal"><span class="stamp"></span></div>
+    <div class="pagenum"></div>
+
+    <div class="frame">
+      <div class="eyebrow"><span class="rule"></span><span>· the brief</span></div>
+      <h1 class="title">the <em>problem</em> statements.</h1>
+      <p class="subtitle">pick one. one real person, one real problem.</p>
+
+      <div class="ps-index">
+        <div class="ps-item">
+          <div class="n">1</div>
+          <div>
+            <h3>credential verification.</h3>
+            <p>automate equivalency for international academic qualifications.</p>
+          </div>
+        </div>
+        <div class="ps-item">
+          <div class="n">2</div>
+          <div>
+            <h3>asset inventory.</h3>
+            <p>a tamper-resistant ledger for government procurement.</p>
+          </div>
+        </div>
+        <div class="ps-item">
+          <div class="n">3</div>
+          <div>
+            <h3>age verification.</h3>
+            <p>reliable legal-age checks at the point of alcohol sale.</p>
+          </div>
+        </div>
+        <div class="ps-item">
+          <div class="n">4</div>
+          <div>
+            <h3>the drug data gap.</h3>
+            <p>current evidence to replace a decade-old survey.</p>
+          </div>
+        </div>
+        <div class="ps-item">
+          <div class="n">5</div>
+          <div>
+            <h3>the last mile.</h3>
+            <p>reach the right person when addresses keep changing.</p>
+          </div>
+        </div>
+        <div class="ps-item">
+          <div class="n">6</div>
+          <div>
+            <h3>ordered signing.</h3>
+            <p>visible signatures with cryptographic proof.</p>
+          </div>
+        </div>
+        <div class="ps-item">
+          <div class="n">7</div>
+          <div>
+            <h3>one-touch service.</h3>
+            <p>cardless, app-light public services for every citizen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROBLEM 01 — CREDENTIAL VERIFICATION ============ -->
+  <section data-label="problem 01 · credential verification">
+    <div class="rule-top"></div>
+    <div class="rule-bot"></div>
+    <div class="flags"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="spine"><span class="pip"></span><span>bhutan bootcamp · druk land · 17 may 2026</span><span class="pip pip-saf"></span></div>
+    <div class="seal"><span class="stamp"></span></div>
+    <div class="pagenum"></div>
+
+    <div class="frame">
+      <div class="eyebrow"><span class="rule"></span><span class="num">01</span><span>· problem statement</span></div>
+      <h1 class="title">credential <em>verification.</em></h1>
+      <p class="subtitle">academic equivalency for students who studied abroad.</p>
+
+      <p class="ps-context">verifying international academic qualifications — especially for students who studied in india or other countries — is still <b>manual, slow, and inconsistent</b>. different reviewers read the same qualification differently, so equivalency decisions vary. there's no reliable way to confirm a document with the issuing institution, and no central record of recognized institutions or past decisions, so every case starts from scratch and applicants rarely learn why they were accepted or rejected.</p>
+
+      <p class="ps-hmw"><span class="label">how might we</span>automate the <em>verification, interpretation, and conversion</em> of international academic credentials into bhutanese equivalency standards — with fairness, accuracy, and transparency built in?</p>
+    </div>
+  </section>
+
+  <!-- ============ PROBLEM 02 — ASSET INVENTORY ============ -->
+  <section data-label="problem 02 · asset inventory">
+    <div class="rule-top"></div>
+    <div class="rule-bot"></div>
+    <div class="flags"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="spine"><span class="pip"></span><span>bhutan bootcamp · druk land · 17 may 2026</span><span class="pip pip-saf"></span></div>
+    <div class="seal"><span class="stamp"></span></div>
+    <div class="pagenum"></div>
+
+    <div class="frame">
+      <div class="eyebrow"><span class="rule"></span><span class="num">02</span><span>· problem statement</span></div>
+      <h1 class="title">asset <em>inventory.</em></h1>
+      <p class="subtitle">tamper-resistant tracking for public procurement.</p>
+
+      <p class="ps-context">government agencies procure thousands of assets a year, recorded in centralized databases. those records can be <b>edited, overwritten, or deleted</b>, and audit trails are often incomplete. when an asset goes missing, is reassigned, or changes value, reconstructing its true history is a manual exercise — auditors spend weeks reconciling inconsistencies, and decision-makers operate on numbers they can't fully trust. as procurement spans more agencies, the gaps widen.</p>
+
+      <p class="ps-hmw"><span class="label">how might we</span>turn government asset inventory and procurement from mutable database records into a <em>transparent, tamper-resistant ledger</em>, so officers, auditors, and oversight bodies can track every asset across its full lifecycle?</p>
+    </div>
+  </section>
+
+  <!-- ============ PROBLEM 03 — AGE VERIFICATION ============ -->
+  <section data-label="problem 03 · age verification">
+    <div class="rule-top"></div>
+    <div class="rule-bot"></div>
+    <div class="flags"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="spine"><span class="pip"></span><span>bhutan bootcamp · druk land · 17 may 2026</span><span class="pip pip-saf"></span></div>
+    <div class="seal"><span class="stamp"></span></div>
+    <div class="pagenum"></div>
+
+    <div class="frame">
+      <div class="eyebrow"><span class="rule"></span><span class="num">03</span><span>· problem statement</span></div>
+      <h1 class="title">age <em>verification.</em></h1>
+      <p class="subtitle">legal drinking age at the point of sale.</p>
+
+      <p class="ps-context">about <b>30.6% of bhutanese adults</b> currently use alcohol, and a school-based study found roughly <b>24% of students under 18</b> were current users. the legal drinking age is 18 and vendors are required to check it — but enforcement is inconsistent in small shops, bars, and informal sales, where age checks come down to a shopkeeper's subjective judgement and weak identity checks.</p>
+
+      <p class="ps-hmw"><span class="label">how might we</span>make legal-drinking-age verification at the point of sale <em>reliable and scalable</em>, reducing underage access while making compliance easy for shopkeepers?</p>
+    </div>
+  </section>
+
+  <!-- ============ PROBLEM 04 — DRUG DATA ============ -->
+  <section data-label="problem 04 · drug data">
+    <div class="rule-top"></div>
+    <div class="rule-bot"></div>
+    <div class="flags"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="spine"><span class="pip"></span><span>bhutan bootcamp · druk land · 17 may 2026</span><span class="pip pip-saf"></span></div>
+    <div class="seal"><span class="stamp"></span></div>
+    <div class="pagenum"></div>
+
+    <div class="frame">
+      <div class="eyebrow"><span class="rule"></span><span class="num">04</span><span>· problem statement</span></div>
+      <h1 class="title">the drug <em>data gap.</em></h1>
+      <p class="subtitle">evidence to drive substance-abuse policy.</p>
+
+      <p class="ps-context">substance abuse in bhutan is rising fast. heroin apprehensions jumped from <b>1 case in 2023 to 28 in 2024</b>, and about <b>29 kg was seized in the first five months of 2025</b> alone. over <b>3,500 people</b> were arrested for drug-related offences in 2025, many under 18. yet the last national drug use survey was in <b>2016</b>, and data collection across agencies is fragmented and inconsistent — policymakers can't see the full scope.</p>
+
+      <p class="ps-hmw"><span class="label">how might we</span>strengthen national data systems and research on substance abuse, so policy, prevention, and treatment run on <em>current evidence</em> instead of a decade-old survey?</p>
+    </div>
+  </section>
+
+  <!-- ============ PROBLEM 05 — THE LAST MILE ============ -->
+  <section data-label="problem 05 · the last mile">
+    <div class="rule-top"></div>
+    <div class="rule-bot"></div>
+    <div class="flags"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="spine"><span class="pip"></span><span>bhutan bootcamp · druk land · 17 may 2026</span><span class="pip pip-saf"></span></div>
+    <div class="seal"><span class="stamp"></span></div>
+    <div class="pagenum"></div>
+
+    <div class="frame">
+      <div class="eyebrow"><span class="rule"></span><span class="num">05</span><span>· problem statement</span></div>
+      <h1 class="title">the last <em>mile.</em></h1>
+      <p class="subtitle">reaching the right person when data goes stale.</p>
+
+      <p class="ps-context">critical deliveries fail not because of bad roads but because location and contact data <b>goes stale</b>. flat numbers get re-numbered, owners move floors without updating records, landmarks are vague ("near the old water tank"), phone numbers change. legal notices, insurance documents, ambulances trying to find an emergency patient, and parcels all miss their target — because people, buildings, flat numbers, and contacts change frequently.</p>
+
+      <p class="ps-hmw"><span class="label">how might we</span>reliably reach the <em>right person at the right place</em> — even when addresses, buildings, flat numbers, and contact details keep changing?</p>
+    </div>
+  </section>
+
+  <!-- ============ PROBLEM 06 — ORDERED SIGNING ============ -->
+  <section data-label="problem 06 · ordered signing">
+    <div class="rule-top"></div>
+    <div class="rule-bot"></div>
+    <div class="flags"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="spine"><span class="pip"></span><span>bhutan bootcamp · druk land · 17 may 2026</span><span class="pip pip-saf"></span></div>
+    <div class="seal"><span class="stamp"></span></div>
+    <div class="pagenum"></div>
+
+    <div class="frame">
+      <div class="eyebrow"><span class="rule"></span><span class="num">06</span><span>· problem statement</span></div>
+      <h1 class="title">ordered <em>signing.</em></h1>
+      <p class="subtitle">human-readable signatures, cryptographic proof.</p>
+
+      <p class="ps-context">getting a document signed, especially <b>in a specific order</b>, is slow, insecure, and hard to verify. wet-ink and thumb-stamp marks can be forged or tampered with, and proving a document is authentic and unaltered years later is hard when signatures aren't bound to real identities. a workable system needs both a clear visual signature people can see, and cryptographic non-repudiation underneath.</p>
+
+      <p class="ps-hmw"><span class="label">how might we</span>build a signing workflow that shows a <em>clear visual signature</em> while cryptographically proving who signed, in what order, and whether the file changed since?</p>
+    </div>
+  </section>
+
+  <!-- ============ PROBLEM 07 — ONE-TOUCH SERVICE ============ -->
+  <section data-label="problem 07 · one-touch service">
+    <div class="rule-top"></div>
+    <div class="rule-bot"></div>
+    <div class="flags"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="spine"><span class="pip"></span><span>bhutan bootcamp · druk land · 17 may 2026</span><span class="pip pip-saf"></span></div>
+    <div class="seal"><span class="stamp"></span></div>
+    <div class="pagenum"></div>
+
+    <div class="frame">
+      <div class="eyebrow"><span class="rule"></span><span class="num">07</span><span>· problem statement</span></div>
+      <h1 class="title">one-touch <em>service.</em></h1>
+      <p class="subtitle">public services for every citizen, literate or not.</p>
+
+      <p class="ps-context">public service delivery <b>excludes a lot of people</b>. literate citizens juggle portals, passwords, and physical cards; people who can't read can use a phone but not navigate forms or error messages. both fear fraud, and when officials help, their actions aren't traceable. cards get lost or forged, apps are heavy and need constant updates, and otps fail the people who need services most.</p>
+
+      <p class="ps-hmw"><span class="label">how might we</span>let <em>any citizen — whether they read or not</em> — securely access any public service without cards or complex apps, using only their biometrics, with tamper-proof data and fully traceable helper actions?</p>
+    </div>
+  </section>
 
   <!-- ============ 01 — RULES ============ -->
   <section data-label="01 hackathon rules">
@@ -624,10 +992,10 @@
     <div class="flags"><i></i><i></i><i></i><i></i><i></i></div>
     <div class="spine"><span class="pip"></span><span>bhutan bootcamp · druk land · 17 may 2026</span><span class="pip pip-saf"></span></div>
     <div class="seal"><span class="stamp"></span><span class="label"><b>i.</b> rules of the road</span></div>
-    <div class="pagenum">01<span>04</span></div>
+    <div class="pagenum"></div>
 
     <div class="frame">
-      <div class="eyebrow"><span class="rule"></span><span class="num">i</span><span>· section one</span></div>
+      <div class="eyebrow"><span class="rule"></span><span>· hackathon rules</span></div>
       <h1 class="title">hackathon <em>rules.</em></h1>
       <p class="subtitle">the eight things to know before you submit.</p>
 
@@ -677,10 +1045,10 @@
     <div class="flags"><i></i><i></i><i></i><i></i><i></i></div>
     <div class="spine"><span class="pip"></span><span>bhutan bootcamp · druk land · 17 may 2026</span><span class="pip pip-saf"></span></div>
     <div class="seal"><span class="stamp"></span><span class="label"><b>ii.</b> the demo</span></div>
-    <div class="pagenum">02<span>04</span></div>
+    <div class="pagenum"></div>
 
     <div class="frame">
-      <div class="eyebrow"><span class="rule"></span><span class="num">ii</span><span>· section two</span></div>
+      <div class="eyebrow"><span class="rule"></span><span>· a winning demo</span></div>
       <h1 class="title">a winning <em>demo.</em></h1>
 
       <p class="demo-hero"><span class="mark">"</span>the room remembers <em>stories</em>, not specs.</p>
@@ -725,10 +1093,10 @@
     <div class="flags"><i></i><i></i><i></i><i></i><i></i></div>
     <div class="spine"><span class="pip"></span><span>bhutan bootcamp · druk land · 17 may 2026</span><span class="pip pip-saf"></span></div>
     <div class="seal"><span class="stamp"></span><span class="label"><b>iii.</b> the atlas</span></div>
-    <div class="pagenum">03<span>04</span></div>
+    <div class="pagenum"></div>
 
     <div class="frame">
-      <div class="eyebrow"><span class="rule"></span><span class="num">iii</span><span>· section three</span></div>
+      <div class="eyebrow"><span class="rule"></span><span>· resources</span></div>
       <h1 class="title">an <em>atlas</em> of resources.</h1>
       <p class="subtitle">things worth bookmarking today.</p>
 
@@ -790,10 +1158,10 @@
     <div class="flags"><i></i><i></i><i></i><i></i><i></i></div>
     <div class="spine"><span class="pip"></span><span>bhutan bootcamp · druk land · 17 may 2026</span><span class="pip pip-saf"></span></div>
     <div class="seal"><span class="stamp"></span><span class="label"><b>iv.</b> the mentors</span></div>
-    <div class="pagenum">04<span>04</span></div>
+    <div class="pagenum"></div>
 
     <div class="frame">
-      <div class="eyebrow"><span class="rule"></span><span class="num">iv</span><span>· section four</span></div>
+      <div class="eyebrow"><span class="rule"></span><span>· your mentors</span></div>
       <h1 class="title">your <em>mentors.</em></h1>
       <p class="subtitle">don't sit silent. raise your hand.</p>
 
@@ -886,6 +1254,38 @@
   </section>
 
 </deck-stage>
+
+<script>
+  /* Auto-number every numbered slide so the deck renumbers itself when
+     slides are added, removed, or reordered. Slides marked [data-cover]
+     are skipped. This is what makes the template reusable — copy the
+     file, swap content, and the "NN / total" footer stays correct with
+     zero manual edits. deck-stage keeps slides in light DOM via <slot>,
+     so a plain querySelectorAll reaches them. */
+  (function () {
+    function number() {
+      var slides = Array.prototype.slice.call(
+        document.querySelectorAll('deck-stage > section')
+      );
+      var numbered = slides.filter(function (s) {
+        return !s.hasAttribute('data-cover');
+      });
+      var total = String(numbered.length).padStart(2, '0');
+      numbered.forEach(function (s, i) {
+        var pn = s.querySelector('.pagenum');
+        if (pn) {
+          pn.innerHTML =
+            String(i + 1).padStart(2, '0') + '<span>' + total + '</span>';
+        }
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', number);
+    } else {
+      number();
+    }
+  })();
+</script>
 
 </body>
 </html>
