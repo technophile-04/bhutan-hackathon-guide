@@ -52,6 +52,10 @@ deck is built and what the rules are. You only provide the new content.
 
 ### The playbook prompt — copy everything between the lines
 
+> ⚠️ **If you forked this into your own GitHub account/org, replace the
+> repository URL on the first line of the prompt below with your fork's
+> URL** — otherwise Claude Code edits a copy you can't publish to.
+
 ```text
 You are updating a presentation deck for a government hackathon. The deck
 lives in this GitHub repository:
@@ -196,3 +200,9 @@ Originally authored at [claude.ai/design](https://claude.ai/design) and
 exported as static HTML/CSS/JS. The `<deck-stage>` web component
 (`deck-stage.js`) handles keyboard navigation, auto-scaling, the
 thumbnail rail, and print-to-PDF. Do not modify `deck-stage.js`.
+
+---
+
+> ⚠️ **Forked this?** Before using the playbook prompt, replace the
+> repository URL on its first line with your own fork's URL — otherwise
+> Claude Code edits a copy you can't publish to.
