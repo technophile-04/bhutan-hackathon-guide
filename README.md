@@ -138,6 +138,10 @@ RULES YOU MUST FOLLOW (this deck has hard constraints)
     (location / date / deadline). If the new event name is long, reduce
     the cover title font-size so it fits on a few lines.
 
+  - Keep the author watermark. The script at the bottom of index.html
+    injects a small "made with ❤ by shiv" credit (linking to
+    https://x.com/ShivBhonde) onto every slide. Do not remove it.
+
   - Do not open the deck in a browser or take screenshots to "check" it.
     Reason from the HTML/CSS directly. Everything you need (sizes,
     colours, layout) is in the source.
@@ -183,6 +187,7 @@ them so Claude Code follows them, but they are here for humans too.
 | **Spine** | The vertical label on every slide carries the event name; keep it short. |
 | **Mentor flags** | `--focused` = saffron (problem specialist), `--team-ndi` = jade (team), `--from-govtech` = sky (solo org). Clone the 3-line CSS pattern for new orgs. |
 | **Cover** | The reusable title card (`data-cover`). Swap title / subtitle / eyebrow / meta. Shrink the title font for longer event names. |
+| **Watermark** | The bottom script injects a "made with ❤ by shiv" credit (→ x.com/ShivBhonde) onto every slide. Keep it. |
 | **Deploy** | Push to `master` → Vercel auto-publishes. Fresh fork → `npx vercel` + `npx vercel git connect` once. |
 
 ## Design source

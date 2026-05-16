@@ -763,6 +763,37 @@
     break-inside: avoid;
   }
 
+  /* ============ WATERMARK (injected into every slide by script) ============ */
+  .credit {
+    position: absolute;
+    bottom: 64px;
+    left: 0; right: 0;
+    z-index: 6;
+    text-align: center;
+    pointer-events: none;
+  }
+  .credit a {
+    pointer-events: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    color: var(--ink-mute);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 120ms ease, border-color 120ms ease;
+  }
+  .credit a:hover,
+  .credit a:focus-visible {
+    color: var(--monastic);
+    border-bottom-color: var(--monastic);
+    outline: none;
+  }
+  .credit .heart {
+    color: #C0392B;
+    font-style: normal;
+    margin: 0 2px;
+  }
+
 </style>
 </head>
 <body>
@@ -1297,10 +1328,24 @@
      zero manual edits. deck-stage keeps slides in light DOM via <slot>,
      so a plain querySelectorAll reaches them. */
   (function () {
-    function number() {
+    var CREDIT =
+      '<div class="credit"><a href="https://x.com/ShivBhonde" ' +
+      'target="_blank" rel="noopener noreferrer">made with ' +
+      '<span class="heart">❤</span> by shiv</a></div>';
+
+    function render() {
       var slides = Array.prototype.slice.call(
         document.querySelectorAll('deck-stage > section')
       );
+
+      // watermark on every slide, including the cover
+      slides.forEach(function (s) {
+        if (!s.querySelector('.credit')) {
+          s.insertAdjacentHTML('beforeend', CREDIT);
+        }
+      });
+
+      // auto page numbers on numbered slides only ([data-cover] skipped)
       var numbered = slides.filter(function (s) {
         return !s.hasAttribute('data-cover');
       });
@@ -1314,9 +1359,9 @@
       });
     }
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', number);
+      document.addEventListener('DOMContentLoaded', render);
     } else {
-      number();
+      render();
     }
   })();
 </script>
